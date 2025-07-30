@@ -44,16 +44,16 @@ class Convert_To_Function
 			return;
 		word=Reverse(word);
 		double x;
-		int y,t;
+		int y=1,t;
 		int i=word.indexOf(variable);
 			if(i!=-1)
 			{
 				x=Double.parseDouble(word.substring(0,i));
 				if(ch=='-')
 					x*=-1.0;
-				t=word.indexof('^');
+				t=word.indexOf('^');
 				if(t!=-1)
-				y=Integer.parseInt(word.substring(t));
+				y=Integer.parseInt(word.substring(t+1));
 				push(x,y);
 			}
 			else
