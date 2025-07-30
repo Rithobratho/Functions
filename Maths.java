@@ -38,22 +38,30 @@ class Convert_To_Function
 	//	}
 	//	return coeff[top--];
 	//}
-	void functionUpdater(String word)
+	void functionUpdater(String word,char ch)
 	{
 		if(word=="")
 			return;
 		word=Reverse(word);
 		double x;
-		int y;
+		int y,t;
 		int i=word.indexOf(variable);
 			if(i!=-1)
 			{
 				x=Double.parseDouble(word.substring(0,i));
-				y=Integer.parseInt(word.substring(i+2));
+				if(ch=='-')
+					x*=-1.0;
+				t=word.indexof('^');
+				if(t!=-1)
+				y=Integer.parseInt(word.substring(t));
 				push(x,y);
 			}
 			else
+			{
 				constant=Double.parseDouble(word);
+				if(ch=='-')
+					constant*=-1;
+			}
 	}
 	String Reverse(String word)
 	{
@@ -62,13 +70,14 @@ class Convert_To_Function
 	void wordExtractor()
 	{
 		String word="";
+		char ch;
 		for(int i=func.length()-1;i>=0;i--)
 		{
-			if(func.charAt(i)=='+')
+			ch=func.charAt(i);
+			if(ch=='+'||ch=='-')
 			{
-				functionUpdater(word);
+				functionUpdater(word,ch);
 				word="";
-				System.out.println(word);
 			}
 			else
 				word+=func.charAt(i);
