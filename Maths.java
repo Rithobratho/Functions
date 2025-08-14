@@ -162,7 +162,7 @@ class Main
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the variable name: ");
 		char v=sc.next().charAt(0);
-		System.out.println("Enter the Equation in constant*[variable]^power+next term format");
+		System.out.println("Enter the Equation in constant[variable]^power[Trigonometric function]^power[variable]+next term format");
 		String func=sc.next();
 		Convert_To_Function Fx=new Convert_To_Function(func,v);
 		//Fx.wordExtractor();
